@@ -1,0 +1,28 @@
+/ SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
+
+contract ErrorHandlingExample {
+    uint256 public count;
+
+    constructor() {
+        count = 0;
+    }
+
+    function modifyCount(uint256 newValue) external {
+        count = newValue;
+    }
+
+    function testRequire(uint256 _value) public pure {
+        require(_value > 5, "Input must be greater than 5");
+    }
+
+    function testRevert(uint256 _value) public pure {
+        if (_value <= 5) {
+            revert("Input must be greater than 5");
+        }
+    }
+
+    function testAssert() public view {
+        assert(count == 10);
+    }
+}
